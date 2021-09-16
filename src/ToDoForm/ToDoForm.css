@@ -1,0 +1,10 @@
+.to-do-banner {
+    display: flex;
+    justify-content: space-around;
+    margin: 0 40px;
+  }
+  
+  .to-do-input {
+    flex-grow: 1;
+    padding: 5px;
+  }

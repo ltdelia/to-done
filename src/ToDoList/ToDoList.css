@@ -1,0 +1,16 @@
+.to-do-header {
+    text-align: center;
+  }
+  
+  .to-do-count {
+    color: #fff;
+  }
+  
+  .to-do-list {
+    background: #dfd8d8;
+    border-radius: 4px;
+    max-width: 400px;
+    padding: 5px;
+    margin: 0 auto;
+  }
+  
