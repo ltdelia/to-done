@@ -8,8 +8,7 @@ const ToDoList = (props) => {
     <div className="to-do-list">
         <h2 className="to-do-header"><span className="to-do-count">X</span> To Dos</h2>
         <ul className="to-do-body">
-            <ToDo />
-            <ToDo />
+            {props.items.map((toDo, index) => <ToDo key={index} content={toDo.toDo} />)}
         </ul>
     </div>
   );
