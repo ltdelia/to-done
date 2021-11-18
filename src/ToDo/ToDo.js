@@ -4,10 +4,14 @@ import "./ToDo.css";
 
 const ToDo = (props) => {
   const [isEditing, setIsEditing] = useState(false);
-  const [isDeleting, setIsDeleting] = useState(false);
 
   const editToDoHandler = () => {
     setIsEditing(true);
+  };
+
+  const deleteToDoHandler = (event) => {
+    const toDoIdToDelete = event.target.id.substring(event.target.id.length - 1);
+    props.onDeleteToDo(toDoIdToDelete);
   };
 
   const submitToDoHandler = () => {
@@ -29,7 +33,7 @@ const ToDo = (props) => {
           <button onClick={editToDoHandler} type="button">
             Edit
           </button>
-          <button type="button">Delete</button>
+          <button id={"to-do-delete-" + props.id} type="button" onClick={deleteToDoHandler}>Delete</button>
         </div>
       )}
     </li>

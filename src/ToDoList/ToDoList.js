@@ -4,14 +4,19 @@ import ToDo from "../ToDo/ToDo";
 import "./ToDoList.css";
 
 const ToDoList = (props) => {
+
+  const deleteToDoHandler = (toDoId) => {
+    props.onDeleteToDoFromList(toDoId);
+  }
+
   return (
     <div className="to-do-list">
       <h2 className="to-do-header">
-        <span className="to-do-count">X</span> To Dos
+        <span className="to-do-count">{props.items.length}</span> To Dos
       </h2>
       <ul className="to-do-body">
         {props.items.map((toDo, index) => (
-          <ToDo key={index} content={toDo.toDo} />
+          <ToDo id={toDo.id} key={index} content={toDo.toDo} onDeleteToDo={deleteToDoHandler} />
         ))}
       </ul>
     </div>

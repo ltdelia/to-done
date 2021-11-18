@@ -21,11 +21,17 @@ function App() {
       }, ...prevToDos];
     });  }
 
+    const deleteToDo = (toDoIdToDelete) => {
+      setToDos(prevToDos => {
+        return prevToDos.filter(toDo => toDo.id != toDoIdToDelete);
+      });  
+  }
+
 
   return (
     <div className="app">
       <ToDoForm onSubmitToDo={saveToDo} />
-      <ToDoList items={toDos} />
+      <ToDoList items={toDos} onDeleteToDoFromList={deleteToDo} />
     </div>
   );
 }
