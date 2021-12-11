@@ -4,10 +4,13 @@ import ToDo from "../ToDo/ToDo";
 import "./ToDoList.css";
 
 const ToDoList = (props) => {
+  const editToDoHandler = (toDoId) => {
+    props.onEditToDoFromList(toDoId);
+  };
 
   const deleteToDoHandler = (toDoId) => {
     props.onDeleteToDoFromList(toDoId);
-  }
+  };
 
   return (
     <div className="to-do-list">
@@ -16,7 +19,13 @@ const ToDoList = (props) => {
       </h2>
       <ul className="to-do-body">
         {props.items.map((toDo, index) => (
-          <ToDo id={toDo.id} key={index} content={toDo.toDo} onDeleteToDo={deleteToDoHandler} />
+          <ToDo
+            id={toDo.id}
+            key={index}
+            content={toDo.toDo}
+            onEditToDo={editToDoHandler}
+            onDeleteToDo={deleteToDoHandler}
+          />
         ))}
       </ul>
     </div>

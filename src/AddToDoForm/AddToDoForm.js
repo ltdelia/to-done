@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 
-import "./ToDoForm.css";
+import "./AddToDoForm.css";
 
-const ToDoForm = (props) => {
+const AddToDoForm = (props) => {
   const [enteredToDo, setEnteredToDo] = useState("");
 
   const toDoChangeHandler = (event) => {
     setEnteredToDo(event.target.value);
-  }
+  };
 
   const formSubmitHandler = (event) => {
     event.preventDefault();
@@ -22,6 +22,7 @@ const ToDoForm = (props) => {
       <form onSubmit={formSubmitHandler}>
         <input
           type="text"
+          name="toDo"
           value={enteredToDo}
           onChange={toDoChangeHandler}
           className="to-do-input"
@@ -33,4 +34,4 @@ const ToDoForm = (props) => {
   );
 };
 
-export default ToDoForm;
+export default AddToDoForm;
