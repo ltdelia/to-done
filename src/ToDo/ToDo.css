@@ -11,10 +11,10 @@
     padding: 10px;
   }
 
-  .to-do-content {
-
-  }
-
   .to-do-controls {
     margin-left: auto;
+  }
+
+  .to-do-control {
+    margin: 0 5px !important;
   }

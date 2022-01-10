@@ -3,9 +3,17 @@
     margin: 0;
     text-align: center;
   }
+
+  h2 {
+    margin-right: 40px;
+  }
   
   .to-do-count {
     color: #8b7ff5;
+  }
+
+  .to-do-header-status {
+    color: #fff;
   }
   
   .to-do-list {
@@ -22,6 +30,7 @@
   }
   
   .to-do-toggle {
+    margin: 0 5px;
     position: absolute;
     top: 0;
     right: 0;

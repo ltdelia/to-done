@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Button } from "@mui/material";
 
 import "./AddToDoForm.css";
 
@@ -28,7 +29,7 @@ const AddToDoForm = (props) => {
           className="to-do-input"
           placeholder="Enter To Do Here..."
         />
-        <button type="submit">Submit</button>
+        <Button className="to-do-submit" type="submit" variant="contained">Submit</Button>
       </form>
     </div>
   );

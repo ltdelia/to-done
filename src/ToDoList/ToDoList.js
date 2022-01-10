@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Button, FormControlLabel, Switch } from "@mui/material";
 
 import ToDo from "../ToDo/ToDo";
 import "./ToDoList.css";
@@ -34,16 +35,19 @@ const ToDoList = (props) => {
           <span className="to-do-count">
             {toDos.filter((toDo) => toDo.complete === completed).length}
           </span>
-          <span>
+          <span className="to-do-header-status">
             {completed ? " Complete " : " Incomplete "}
             {toDos.filter((toDo) => toDo.complete === completed).length === 1
               ? "To Do"
               : "To Dos"}
           </span>
         </h2>
-        <button className="to-do-toggle" onClick={toggleToDos}>
-          Toggle Complete ToDos{" "}
-        </button>
+        <div className="to-do-toggle">
+          <FormControlLabel
+            control={<Switch onClick={toggleToDos} />}
+            label="Toggle Complete ToDos"
+          />
+        </div>
       </div>
       <ul className="to-do-body">
         {toDos

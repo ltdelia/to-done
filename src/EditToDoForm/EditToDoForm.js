@@ -1,3 +1,4 @@
+import { Button } from "@mui/material";
 import React, { useState, useEffect } from "react";
 
 import "./EditToDoForm.css";
@@ -35,7 +36,7 @@ const EditToDoForm = (props) => {
           className="to-do-input"
           placeholder="Enter To Do Here..."
         />
-        <button type="submit">Update</button>
+        <Button className="to-do-submit" variant="contained" type="submit">Update</Button>
       </form>
     </div>
   );
