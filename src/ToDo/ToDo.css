@@ -7,6 +7,14 @@
     display: flex;
     font-size: 12px;
     justify-content: space-between;
-    margin-bottom: 6px;
-    padding: 3px 10px;
+    margin-bottom: 15px;
+    padding: 10px;
+  }
+
+  .to-do-content {
+
+  }
+
+  .to-do-controls {
+    margin-left: auto;
   }

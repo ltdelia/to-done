@@ -29,16 +29,22 @@ const ToDoList = (props) => {
 
   return (
     <div className="to-do-list">
-      <h2 className="to-do-header">
-        <span className="to-do-count">
-          {toDos.filter((toDo) => toDo.complete === completed).length}
-        </span>
-        {completed ? " Complete " : " Incomplete "}
-        {toDos.filter((toDo) => toDo.complete === completed).length === 1
-          ? "To Do"
-          : "To Dos"}
-        <button onClick={toggleToDos}>Toggle Complete ToDos </button>
-      </h2>
+      <div className="to-do-header">
+        <h2>
+          <span className="to-do-count">
+            {toDos.filter((toDo) => toDo.complete === completed).length}
+          </span>
+          <span>
+            {completed ? " Complete " : " Incomplete "}
+            {toDos.filter((toDo) => toDo.complete === completed).length === 1
+              ? "To Do"
+              : "To Dos"}
+          </span>
+        </h2>
+        <button className="to-do-toggle" onClick={toggleToDos}>
+          Toggle Complete ToDos{" "}
+        </button>
+      </div>
       <ul className="to-do-body">
         {toDos
           .filter((toDo) => toDo.complete === completed)

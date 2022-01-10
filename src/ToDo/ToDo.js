@@ -24,30 +24,30 @@ const ToDo = (props) => {
 
   return (
     <li className="to-do" id={"to-do-" + props.id} key={props.id}>
-      <div>
-        <span>{props.content}</span>{" "}
-        <button
-          id={"to-do-edit-" + props.id}
-          onClick={editToDoHandler}
-          type="button"
-        >
-          Edit
-        </button>
-        <button
-          id={"to-do-delete-" + props.id}
-          type="button"
-          onClick={deleteToDoHandler}
-        >
-          Delete
-        </button>
-        <button
-          id={"to-do-complete-" + props.id}
-          type="button"
-          onClick={completeToDoHandler}
-        >
-          Mark Complete
-        </button>
-      </div>
+        <span className="to-do-content">{props.content}</span>{" "}
+        <div className="to-do-controls">
+          <button
+            id={"to-do-edit-" + props.id}
+            onClick={editToDoHandler}
+            type="button"
+          >
+            Edit
+          </button>
+          <button
+            id={"to-do-delete-" + props.id}
+            type="button"
+            onClick={deleteToDoHandler}
+          >
+            Delete
+          </button>
+          <button
+            id={"to-do-complete-" + props.id}
+            type="button"
+            onClick={completeToDoHandler}
+          >
+            Mark Complete
+          </button>
+        </div>
     </li>
   );
 };

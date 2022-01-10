@@ -1,10 +1,17 @@
 .to-do-banner {
-    display: flex;
-    justify-content: space-around;
-    margin: 0 40px;
-  }
-  
-  .to-do-input {
-    flex-grow: 1;
-    padding: 5px;
-  }
+  display: flex;
+  justify-content: center;
+  margin: 20px 110px;
+  padding: 0px 110px;
+}
+
+form {
+  display: inline-flex;
+  flex-grow: 1;
+}
+
+.to-do-input {
+  flex-grow: 2;
+  width: 100%;
+  padding: 5px;
+}
