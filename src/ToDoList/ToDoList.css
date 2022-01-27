@@ -1,37 +1,16 @@
-.to-do-header {
-    position: relative;
-    margin: 0;
-    text-align: center;
-  }
+.to-do-count {
+  color: #8b7ff5;
+}
 
-  h2 {
-    margin-right: 40px;
-  }
-  
-  .to-do-count {
-    color: #8b7ff5;
-  }
+.to-do-header-status {
+  color: #fff;
+}
 
-  .to-do-header-status {
-    color: #fff;
-  }
-  
-  .to-do-list {
-    background: #3112e4;
-    border-radius: 10px;
-    max-width: 700px;
-    padding: 10px;
-    margin: 0 auto;
-  }
+.to-do-list {
+  background: #3112e4;
+  max-width: 700px;
+}
 
-  .to-do-body {
-    margin: 0.5em;
-    padding: 0;
-  }
-  
-  .to-do-toggle {
-    margin: 0 5px;
-    position: absolute;
-    top: 0;
-    right: 0;
-  }
+.to-do-toggle {
+  color: #fff;
+}

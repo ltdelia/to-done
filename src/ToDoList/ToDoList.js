@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, FormControlLabel, Switch } from "@mui/material";
+import { FormControlLabel, Switch } from "@mui/material";
 
 import ToDo from "../ToDo/ToDo";
 import "./ToDoList.css";
@@ -29,9 +29,9 @@ const ToDoList = (props) => {
   };
 
   return (
-    <div className="to-do-list">
-      <div className="to-do-header">
-        <h2>
+    <div className="to-do-list rounded-lg p-2 mx-auto">
+      <div className="to-do-header m-0 py-1 text-center relative">
+        <h2 className="mr-10">
           <span className="to-do-count">
             {toDos.filter((toDo) => toDo.complete === completed).length}
           </span>
@@ -42,14 +42,14 @@ const ToDoList = (props) => {
               : "To Dos"}
           </span>
         </h2>
-        <div className="to-do-toggle">
+        <div className="to-do-toggle my-1 absolute top-0 right-0">
           <FormControlLabel
             control={<Switch onClick={toggleToDos} />}
             label="Toggle Complete ToDos"
           />
         </div>
       </div>
-      <ul className="to-do-body">
+      <ul className="to-do-body m-2 p-0">
         {toDos
           .filter((toDo) => toDo.complete === completed)
           .map((toDo) => (

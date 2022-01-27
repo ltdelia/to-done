@@ -66,7 +66,7 @@ function App() {
   };
 
   return (
-    <div className="app">
+    <div className="app p-5">
       {isEditing ? (
         <EditToDoForm
           setIsEditing={setIsEditing}

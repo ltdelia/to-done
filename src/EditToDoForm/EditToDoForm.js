@@ -26,17 +26,19 @@ const EditToDoForm = (props) => {
   };
 
   return (
-    <div className="to-do-banner">
-      <form onSubmit={formSubmitHandler}>
+    <div className="to-do-banner flex justify-center my-5 mx-28 py-0 px-28">
+      <form className="inline-flex grow-1" onSubmit={formSubmitHandler}>
         <input
           type="text"
           name="toDo"
           value={toDo.toDo}
           onChange={toDoChangeHandler}
-          className="to-do-input"
+          className="to-do-input grow-2 w-full p-1 rounded"
           placeholder="Enter To Do Here..."
         />
-        <Button className="to-do-submit" variant="contained" type="submit">Update</Button>
+        <Button className="to-do-submit" variant="contained" type="submit">
+          Update
+        </Button>
       </form>
     </div>
   );

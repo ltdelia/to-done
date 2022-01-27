@@ -29,9 +29,13 @@ const ToDo = (props) => {
   };
 
   return (
-    <li className="to-do" id={"to-do-" + props.id} key={props.id}>
+    <li
+      className="to-do flex justify-between items-center rounded-sm shadow-sm mb-4 p-2"
+      id={"to-do-" + props.id}
+      key={props.id}
+    >
       <span className="to-do-content">{props.content}</span>{" "}
-      <div className="to-do-controls">
+      <div className="to-do-controls ml-auto">
         <Button
           id={"to-do-edit-" + props.id}
           className="to-do-control"
