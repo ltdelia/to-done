@@ -8,7 +8,14 @@ import EditIcon from "@mui/icons-material/Edit";
 
 import "./ToDo.css";
 
-const ToDo = ({id, content, onEditToDo, onCompleteToDo, onDeleteToDo}) => {
+const ToDo = ({
+  id,
+  content,
+  complete,
+  onEditToDo,
+  onCompleteToDo,
+  onDeleteToDo,
+}) => {
   const editToDoHandler = (event) => {
     const toDoIdToEdit = event.target.id.split("_")[1];
     onEditToDo(toDoIdToEdit);
@@ -31,38 +38,40 @@ const ToDo = ({id, content, onEditToDo, onCompleteToDo, onDeleteToDo}) => {
       key={id}
     >
       <span className="to-do-content">{content}</span>{" "}
-      <div className="to-do-controls ml-auto">
-        <Button
-          id={"to-do-edit_" + id}
-          className="to-do-control"
-          type="button"
-          onClick={editToDoHandler}
-          variant="contained"
-          startIcon={<EditIcon />}
-        >
-          Edit
-        </Button>
-        <Button
-          id={"to-do-delete_" + id}
-          className="to-do-control"
-          type="button"
-          onClick={deleteToDoHandler}
-          variant="contained"
-          startIcon={<DeleteIcon />}
-        >
-          Delete
-        </Button>
-        <Button
-          id={"to-do-complete_" + id}
-          className="to-do-control"
-          type="button"
-          onClick={completeToDoHandler}
-          variant="contained"
-          startIcon={<CheckIcon />}
-        >
-          Mark Complete
-        </Button>
-      </div>
+      {!complete && (
+        <div className="to-do-controls ml-auto">
+          <Button
+            id={"to-do-edit_" + id}
+            className="to-do-control"
+            type="button"
+            onClick={editToDoHandler}
+            variant="contained"
+            startIcon={<EditIcon />}
+          >
+            Edit
+          </Button>
+          <Button
+            id={"to-do-delete_" + id}
+            className="to-do-control"
+            type="button"
+            onClick={deleteToDoHandler}
+            variant="contained"
+            startIcon={<DeleteIcon />}
+          >
+            Delete
+          </Button>
+          <Button
+            id={"to-do-complete_" + id}
+            className="to-do-control"
+            type="button"
+            onClick={completeToDoHandler}
+            variant="contained"
+            startIcon={<CheckIcon />}
+          >
+            Mark Complete
+          </Button>
+        </div>
+      )}
     </li>
   );
 };
