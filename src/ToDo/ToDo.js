@@ -8,36 +8,32 @@ import EditIcon from "@mui/icons-material/Edit";
 
 import "./ToDo.css";
 
-const ToDo = (props) => {
+const ToDo = ({id, content, onEditToDo, onCompleteToDo, onDeleteToDo}) => {
   const editToDoHandler = (event) => {
-    const toDoIdToEdit = event.target.id.substring(event.target.id.length - 1);
-    props.onEditToDo(toDoIdToEdit);
+    const toDoIdToEdit = event.target.id.split("_")[1];
+    onEditToDo(toDoIdToEdit);
   };
 
   const completeToDoHandler = (event) => {
-    const toDoIdToComplete = event.target.id.substring(
-      event.target.id.length - 1
-    );
-    props.onCompleteToDo(toDoIdToComplete);
+    const toDoIdToComplete = event.target.id.split("_")[1];
+    onCompleteToDo(toDoIdToComplete);
   };
 
   const deleteToDoHandler = (event) => {
-    const toDoIdToDelete = event.target.id.substring(
-      event.target.id.length - 1
-    );
-    props.onDeleteToDo(toDoIdToDelete);
+    const toDoIdToDelete = event.target.id.split("_")[1];
+    onDeleteToDo(toDoIdToDelete);
   };
 
   return (
     <li
       className="to-do flex justify-between items-center rounded-sm shadow-sm mb-4 p-2"
-      id={"to-do-" + props.id}
-      key={props.id}
+      id={"to-do-" + id}
+      key={id}
     >
-      <span className="to-do-content">{props.content}</span>{" "}
+      <span className="to-do-content">{content}</span>{" "}
       <div className="to-do-controls ml-auto">
         <Button
-          id={"to-do-edit-" + props.id}
+          id={"to-do-edit_" + id}
           className="to-do-control"
           type="button"
           onClick={editToDoHandler}
@@ -47,7 +43,7 @@ const ToDo = (props) => {
           Edit
         </Button>
         <Button
-          id={"to-do-delete-" + props.id}
+          id={"to-do-delete_" + id}
           className="to-do-control"
           type="button"
           onClick={deleteToDoHandler}
@@ -57,7 +53,7 @@ const ToDo = (props) => {
           Delete
         </Button>
         <Button
-          id={"to-do-complete-" + props.id}
+          id={"to-do-complete_" + id}
           className="to-do-control"
           type="button"
           onClick={completeToDoHandler}

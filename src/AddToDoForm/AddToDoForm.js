@@ -3,7 +3,7 @@ import { Button } from "@mui/material";
 
 import "./AddToDoForm.css";
 
-const AddToDoForm = (props) => {
+const AddToDoForm = ({onSubmitToDo}) => {
   const [enteredToDo, setEnteredToDo] = useState("");
 
   const toDoChangeHandler = (event) => {
@@ -13,7 +13,7 @@ const AddToDoForm = (props) => {
   const formSubmitHandler = (event) => {
     event.preventDefault();
 
-    props.onSubmitToDo(enteredToDo);
+    onSubmitToDo(enteredToDo);
 
     setEnteredToDo("");
   };

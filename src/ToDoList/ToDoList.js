@@ -4,28 +4,28 @@ import { FormControlLabel, Switch } from "@mui/material";
 import ToDo from "../ToDo/ToDo";
 import "./ToDoList.css";
 
-const ToDoList = (props) => {
+const ToDoList = ({items, onEditToDoFromList, onCompleteToDoFromList, onDeleteToDoFromList}) => {
   const [completed, setCompleted] = useState(false);
   const [toDos, setToDos] = useState([]);
 
   useEffect(() => {
-    setToDos(props.items);
-  }, [props.items]);
+    setToDos(items);
+  }, [items]);
 
   const toggleToDos = () => {
     completed ? setCompleted(false) : setCompleted(true);
   };
 
   const editToDoHandler = (toDoId) => {
-    props.onEditToDoFromList(toDoId);
+    onEditToDoFromList(toDoId);
   };
 
   const completeToDoHandler = (toDoId) => {
-    props.onCompleteToDoFromList(toDoId);
+    onCompleteToDoFromList(toDoId);
   };
 
   const deleteToDoHandler = (toDoId) => {
-    props.onDeleteToDoFromList(toDoId);
+    onDeleteToDoFromList(toDoId);
   };
 
   return (

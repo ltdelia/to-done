@@ -3,12 +3,12 @@ import React, { useState, useEffect } from "react";
 
 import "./EditToDoForm.css";
 
-const EditToDoForm = (props) => {
-  const [toDo, setToDo] = useState(props.currentToDo);
+const EditToDoForm = ({currentToDo, onUpdateToDo, setIsEditing}) => {
+  const [toDo, setToDo] = useState(currentToDo);
 
   useEffect(() => {
-    setToDo(props.currentToDo);
-  }, [props]);
+    setToDo(currentToDo);
+  }, [currentToDo, onUpdateToDo, setIsEditing]);
 
   const toDoChangeHandler = (event) => {
     const { name, value } = event.target;
@@ -18,9 +18,9 @@ const EditToDoForm = (props) => {
   const formSubmitHandler = (event) => {
     event.preventDefault();
 
-    props.onUpdateToDo(toDo.id, toDo);
+    onUpdateToDo(toDo.id, toDo);
 
-    props.setIsEditing(false);
+    setIsEditing(false);
 
     setToDo("");
   };

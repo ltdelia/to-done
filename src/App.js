@@ -1,14 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
+
+import { db } from "./firebase";
+import {
+  collection,
+  doc,
+  onSnapshot,
+  addDoc,
+  deleteDoc,
+  updateDoc,
+  serverTimestamp,
+} from "firebase/firestore";
 
 import AddToDoForm from "./AddToDoForm/AddToDoForm";
 import EditToDoForm from "./EditToDoForm/EditToDoForm";
 import ToDoList from "./ToDoList/ToDoList";
-
-const starterToDos = [
-  { id: 1, toDo: "Do the dumb things I gotta do", complete: false },
-  { id: 2, toDo: "Touch the puppet head", complete: false },
-];
 
 const initialFormState = {
   id: null,
@@ -17,52 +23,54 @@ const initialFormState = {
 };
 
 function App() {
-  const [toDos, setToDos] = useState(starterToDos);
+  const [toDos, setToDos] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
   const [currentToDo, setCurrentToDo] = useState(initialFormState);
 
+  useEffect(() => {
+    onSnapshot(collection(db, "todos"), (snapshot) => {
+      setToDos(
+        snapshot.docs.map((doc) => ({
+          id: doc.id,
+          toDo: doc.data().toDo,
+          complete: doc.data().complete,
+        }))
+      );
+    });
+  }, []);
+
   const saveToDo = (enteredToDo) => {
-    setToDos((prevToDos) => {
-      return [
-        {
-          id: toDos.length + 1,
-          toDo: enteredToDo,
-          complete: false,
-        },
-        ...prevToDos,
-      ];
+    addDoc(collection(db, "todos"), {
+      toDo: enteredToDo,
+      complete: false,
+      timestamp: serverTimestamp(),
     });
   };
 
   const editToDo = (toDoIdToEdit) => {
     setIsEditing(true);
-    const toDoToEdit = toDos.filter(
-      (toDo) => toDo.id === parseInt(toDoIdToEdit)
-    )[0];
+    const toDoToEdit = toDos.filter((toDo) => toDo.id == toDoIdToEdit)[0];
     setCurrentToDo(toDoToEdit);
   };
 
-  const updateToDo = (id, updatedToDo) => {
-    setToDos((prevToDos) => {
-      return prevToDos.map((toDo) =>
-        toDo.id === parseInt(id) ? updatedToDo : toDo
-      );
+  const updateToDo = async (id, { toDo }) => {
+    console.log(id, toDo);
+    const toDoToUpdate = doc(db, "todos", id);
+    await updateDoc(toDoToUpdate, {
+      toDo: toDo,
     });
   };
 
-  const completeToDo = (toDoIdToComplete) => {
-    const toDoToComplete = toDos.filter(
-      (toDo) => toDo.id === parseInt(toDoIdToComplete)
-    )[0];
-    const completedToDo = { ...toDoToComplete, complete: true };
-    updateToDo(toDoIdToComplete, completedToDo);
+  const completeToDo = async (toDoIdToComplete) => {
+    const toDoToUpdate = doc(db, "todos", toDoIdToComplete);
+    await updateDoc(toDoToUpdate, {
+      complete: true,
+    });
   };
 
-  const deleteToDo = (toDoIdToDelete) => {
+  const deleteToDo = async (toDoIdToDelete) => {
     setIsEditing(false);
-    setToDos((prevToDos) => {
-      return prevToDos.filter((toDo) => toDo.id !== parseInt(toDoIdToDelete));
-    });
+    await deleteDoc(doc(db, "todos", toDoIdToDelete));
   };
 
   return (
