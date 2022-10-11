@@ -46,6 +46,7 @@ const ToDo = ({
             type="button"
             onClick={editToDoHandler}
             variant="contained"
+            color="secondary"
             startIcon={<EditIcon />}
           >
             Edit
@@ -56,6 +57,7 @@ const ToDo = ({
             type="button"
             onClick={deleteToDoHandler}
             variant="contained"
+            color="error"
             startIcon={<DeleteIcon />}
           >
             Delete
@@ -66,9 +68,10 @@ const ToDo = ({
             type="button"
             onClick={completeToDoHandler}
             variant="contained"
+            color="success"
             startIcon={<CheckIcon />}
           >
-            Mark Complete
+            Complete
           </Button>
         </div>
       )}
